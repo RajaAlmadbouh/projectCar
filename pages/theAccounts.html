@@ -35,13 +35,13 @@
         <main class="px-3">
             <form action="" method="post" id="fuelEconomyForm">
                 <label for="distanceTraveld">Enter the distance traveled in kilometers KM : </label>
-                <input type="number" id="distanceTraveld" name="distanceTraveld" required>
+                <input type="number" id="distanceTraveld" name="distanceTraveld" step="any" required>
                 <br>
                 <label for="carFuel">Enter the amount of fuel spent by a car in L/100KM : </label>
-                <input type="number" id="carFuel" name="carFuel" required>
+                <input type="number" id="carFuel" name="carFuel" step="any" required>
                 <br>
                 <label for="priceOfGasoline">Enter the price of gasoline in Jordanian dinars JD : </label>
-                <input type="number" id="priceOfGasoline" name="priceOfGasoline" required>
+                <input type="number" id="priceOfGasoline" name="priceOfGasoline" step="any" required>
                 <br>
                 <input type="submit" value="amount of fuel consumption" >
             </form>
@@ -61,8 +61,13 @@
               <br>
                 <input type="submit" value="Enter" onclick="generateAdditionalFields()" >
           </div>
+          
 
           <div id="additionalFieldsContainer"></div>
+
+          
+          
+
           
 
         </main>
