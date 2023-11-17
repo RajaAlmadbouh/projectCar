@@ -37,16 +37,33 @@ fuelEconomy.addEventListener("submit", function(e){
     // Set values for additional fields
     //document.getElementById('field1').value = "Enter the number of trips you have completed on ((TaxiF))";
     document.getElementById('percentageTaxiF').value = "14";
+    document.getElementById('percentagePetra').value = "16";
 
     
 });
 //////////////////////////////////////////
 
-    function generateAdditionalFields() {
-        var tripsTaxiFInput = document.getElementById('tripsTaxiF');
-        var numberOfTrips = parseInt(tripsTaxiFInput.value) || 0;
-
-        var additionalFieldsContainer = document.getElementById('additionalFieldsContainer');
+    function generateAdditionalFields(appName) {
+      var  tripsInput;
+      var numberOfTrips;
+      var divSho;
+      var percentage;
+      
+        if  (appName.includes("TaxiF")){
+             tripsInput = document.getElementById('tripsTaxiF');
+             numberOfTrips = parseInt(tripsInput.value) || 0;
+             divSho=document.getElementById('additionalFieldsContainer');
+             
+        }
+        else{
+             tripsInput = document.getElementById('tripsPetra');
+             numberOfTrips = parseInt(tripsInput.value) || 0;
+             divSho=document.getElementById('additionalFieldsContainerPetra');
+            
+    
+        }
+      
+        var additionalFieldsContainer = divSho
         additionalFieldsContainer.innerHTML = ''; // Clear existing fields
 
         var addSubmit = document.createElement('input');
@@ -74,7 +91,7 @@ fuelEconomy.addEventListener("submit", function(e){
         
         addSubmit.addEventListener("click", function(e){
             e.preventDefault();
-            applicationAccounts(getTripData());
+            applicationAccounts(getTripData(appName));
         });
        
         additionalFieldsContainer.appendChild(addSubmit);
@@ -101,9 +118,15 @@ fuelEconomy.addEventListener("submit", function(e){
 
     }
     //////////////////////////
-    function getTripData() {
+    function getTripData(appName) {
         var trips = [];
-        var numberOfTrips = parseInt(document.getElementById('tripsTaxiF').value) || 0;
+        var numberOfTrips
+        if  (appName.includes("TaxiF"))
+             numberOfTrips = parseInt(document.getElementById('tripsTaxiF').value) || 0;
+        
+        else
+        numberOfTrips = parseInt(document.getElementById('tripsPetra').value) || 0;
+        
 
         for (var i = 1; i <= numberOfTrips; i++) {
             var tripData = parseFloat(document.getElementById('tripData' + i).value) || 0;
@@ -114,14 +137,22 @@ fuelEconomy.addEventListener("submit", function(e){
     }
     ////////////////////////
 
-    function applicationAccounts(tripApp) {
+    function applicationAccounts(tripApp,appName) {
         var sumTrip = 0;
         var sumProfit = 0;
+        var profitTrip
 
         for (var i = 0; i < tripApp.length; i++) {
             sumTrip += tripApp[i];
-            var profitTrip = ((tripApp[i] * 100) - (tripApp[i] * document.getElementById('percentageTaxiF').value)) / 100;
+            if  (appName.includes('TaxiF'))
+            profitTrip = ((tripApp[i] * 100) - (tripApp[i] * document.getElementById('percentageTaxiF').value)) / 100;
+       
+       else
+       profitTrip = ((tripApp[i] * 100) - (tripApp[i] * document.getElementById('percentageTaxiF').value)) / 100;
+
+           
             sumProfit += profitTrip;
+        
         }
 
         var totalTrips = document.getElementById('totalTrips');
@@ -137,6 +168,7 @@ fuelEconomy.addEventListener("submit", function(e){
         console.log("Total number of trips without tax = " + sumTrip + " JD");
         console.log("Total net profit with tax         = " + sumProfit + " JD");
         console.log("The sum of the value taken by the application = " + (sumTrip - sumProfit) + " JD");
+        document.getElementById('petraFields').style.display='block'
     }
     ///////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////

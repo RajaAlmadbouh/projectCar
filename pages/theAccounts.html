@@ -59,11 +59,26 @@
               <label for="percentageTaxiF">Enter the application percentage %</label>
               <input type="number" id="percentageTaxiF" name="percentageTaxiF" >
               <br>
-                <input type="submit" value="Enter" onclick="generateAdditionalFields()" >
+                <input type="submit" value="Enter" onclick="generateAdditionalFields('TaxiF')" >
           </div>
           
 
           <div id="additionalFieldsContainer"></div>
+
+
+          <div id="petraFields" style="display: none;">
+            <!-- Additional fields go here -->
+            <label for="tripsPetra">Enter the number of trips you have completed on ((Petra))</label>
+            <input type="number" id="tripsPetra" name="tripsPetra" >
+            <br>
+            <label for="percentagePetra">Enter the application percentage %</label>
+            <input type="number" id="percentagePetra" name="percentagePetra" >
+            <br>
+              <input type="submit" value="Enter" onclick="generateAdditionalFields('Petra')" >
+        </div>
+        
+
+        <div id="additionalFieldsContainerPetra"></div>
 
           
           
