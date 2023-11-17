@@ -51,34 +51,88 @@
             <br>
             <br>
 
-            <div id="taxiFFields" style="display: none;">
+            <div class="tripFields" id="taxiFFields" style="display: none;">
               <!-- Additional fields go here -->
               <label for="tripsTaxiF">Enter the number of trips you have completed on ((TaxiF))</label>
-              <input type="number" id="tripsTaxiF" name="tripsTaxiF" >
+              <input type="number" class="numberTrip" id="tripsTaxiF" name="tripsTaxiF" >
               <br>
               <label for="percentageTaxiF">Enter the application percentage %</label>
-              <input type="number" id="percentageTaxiF" name="percentageTaxiF" >
+              <input type="number" class="percentage" id="percentageTaxiF" name="percentageTaxiF" >
               <br>
-                <input type="submit" value="Enter" onclick="generateAdditionalFields('TaxiF')" >
+                <input type="submit" value="Enter" onclick="generateAdditionalFields(0)" >
           </div>
           
 
-          <div id="additionalFieldsContainer"></div>
+          <div id="additionalFieldsContainerF" class="additionalFieldsContainer"></div>
 
 
-          <div id="petraFields" style="display: none;">
+          <!--petraRideApp-->
+
+
+          <div class="tripFields" id="petraFields" style="display: none;">
             <!-- Additional fields go here -->
-            <label for="tripsPetra">Enter the number of trips you have completed on ((Petra))</label>
-            <input type="number" id="tripsPetra" name="tripsPetra" >
+            <label for="tripsPetra">Enter the number of trips you have completed on ((Petra Ride))</label>
+            <input type="number" class="numberTrip" id="tripsPetra" name="tripsPetra" >
             <br>
             <label for="percentagePetra">Enter the application percentage %</label>
-            <input type="number" id="percentagePetra" name="percentagePetra" >
+            <input type="number" class="percentage" id="percentagePetra" name="percentagePetra" >
             <br>
-              <input type="submit" value="Enter" onclick="generateAdditionalFields('Petra')" >
+              <input type="submit" value="Enter" onclick="generateAdditionalFields(1)" >
         </div>
         
 
-        <div id="additionalFieldsContainerPetra"></div>
+        <div id="additionalFieldsContainerP" class="additionalFieldsContainer"></div>
+
+        <!--zainCarApp-->
+
+
+        <div class="tripFields" id="zainCarFields" style="display: none;">
+          <!-- Additional fields go here -->
+          <label for="tripsZainCar">Enter the number of trips you have completed on ((Zain Car))</label>
+          <input type="number" class="numberTrip" id="tripsZainCar" name="tripsZainCar" >
+          <br>
+          <label for="percentageZainCar">Enter the application percentage %</label>
+          <input type="number" class="percentage" id="percentageZainCar" name="percentageZainCar" >
+          <br>
+            <input type="submit" value="Enter" onclick="generateAdditionalFields(2)" >
+      </div>
+      
+
+      <div id="additionalFieldsContainerZ" class="additionalFieldsContainer"></div>
+
+      <!--ticramApp-->
+
+
+      <div class="tripFields" id="ticramCarFields" style="display: none;">
+        <!-- Additional fields go here -->
+        <label for="tripsTicram">Enter the number of trips you have completed on ((Ticram))</label>
+        <input type="number" class="numberTrip" id="tripsTicram" name="tripsTicram" >
+        <br>
+        <label for="percentageTicram">Enter the application percentage %</label>
+        <input type="number" class="percentage" id="percentageTicram" name="percentageTicram" >
+        <br>
+          <input type="submit" value="Enter" onclick="generateAdditionalFields(3)" >
+    </div>
+    
+
+    <div id="additionalFieldsContainerT" class="additionalFieldsContainer"></div>
+
+    <!--goJoApp-->
+
+
+    <div class="tripFields" id="goJoCarFields" style="display: none;">
+      <!-- Additional fields go here -->
+      <label for="tripsGoJo">Enter the number of trips you have completed on ((GoJo))</label>
+      <input type="number" class="numberTrip" id="tripsGoJo" name="tripsGoJo" >
+      <br>
+      <label for="percentageGoJo">Enter the application percentage %</label>
+      <input type="number" class="percentage" id="percentageGoJo" name="percentageGoJo" >
+      <br>
+        <input type="submit" value="Enter" onclick="generateAdditionalFields(4)" >
+  </div>
+  
+
+  <div id="additionalFieldsContainerG" class="additionalFieldsContainer"></div>
 
           
           
