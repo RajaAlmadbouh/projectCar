@@ -1,9 +1,4 @@
 var fuelEconomy = document.getElementById('fuelEconomyForm');
-/*var distanceTraveld = parseFloat(document.getElementById('distanceTraveld').value);
-var carFuel = parseFloat(document.getElementById('carFuel').value);
-var priceOfGasoline = parseFloat(document.getElementById('priceOfGasoline').value);*/
-
-//console.log(priceOfGasoline);
 
 fuelEconomy.addEventListener("submit", function(e){
     e.preventDefault();
@@ -12,7 +7,7 @@ fuelEconomy.addEventListener("submit", function(e){
     var carFuel = parseFloat(document.getElementById("carFuel").value);
     var priceOfGasoline = parseFloat(document.getElementById("priceOfGasoline").value);
 
-    // Check if inputs are valid numbers
+ 
     if (isNaN(distanceTraveled) || isNaN(carFuel) || isNaN(priceOfGasoline)) {
         alert("Please enter valid numbers for all fields.");
         return;
@@ -42,102 +37,10 @@ fuelEconomy.addEventListener("submit", function(e){
 });
 //////////////////////////////////////////
 
-    /*function generateAdditionalFields() {
-        var tripsTaxiFInput = document.getElementById('tripsTaxiF');
-        var numberOfTrips = parseInt(tripsTaxiFInput.value) || 0;
-
-        var additionalFieldsContainer = document.getElementById('additionalFieldsContainer');
-        additionalFieldsContainer.innerHTML = ''; // Clear existing fields
-
-        var addSubmit = document.createElement('input');
-            addSubmit.value = 'Enter';
-            addSubmit.type = 'button';
-            //addSubmit.onclick = generateAdditionalFieldsPtraRide;
-
-        for (var i = 1; i <= numberOfTrips; i++) {
-            var label = document.createElement('label');
-            label.textContent = 'Enter data for trip ' + i + ':';
-
-            var input = document.createElement('input');
-            input.type = 'number';
-            input.name = 'tripData';
-            input.id = 'tripData' + i;
-            input.step ='any'; 
-
-            var br = document.createElement('br');
-
-            additionalFieldsContainer.appendChild(label);
-            additionalFieldsContainer.appendChild(input);
-            additionalFieldsContainer.appendChild(br);
-            
-        }
-        
-        addSubmit.addEventListener("click", function(e){
-            e.preventDefault();
-            applicationAccounts(getTripData());
-        });
-       
-        additionalFieldsContainer.appendChild(addSubmit);
-
-        var p1 = document.createElement('p');
-        p1.id = 'totalTrips';
-
-        var p2 = document.createElement('p');
-        p2.id = 'profitTrips';
-
-        var p3 = document.createElement('p');
-        p3.id = 'applicationTrips';
-
-        additionalFieldsContainer.appendChild(p1);
-        additionalFieldsContainer.appendChild(p2);
-        additionalFieldsContainer.appendChild(p3);
-
-        
-
-     
-
-    }
-    //////////////////////////
-    function getTripData() {
-        var trips = [];
-        var numberOfTrips = parseInt(document.getElementById('tripsTaxiF').value) || 0;
-
-        for (var i = 1; i <= numberOfTrips; i++) {
-            var tripData = parseFloat(document.getElementById('tripData' + i).value) || 0;
-            trips.push(tripData);
-        }
-
-        return trips;
-    }
-    ////////////////////////
-
-    function applicationAccounts(tripApp) {
-        var sumTrip = 0;
-        var sumProfit = 0;
-
-        for (var i = 0; i < tripApp.length; i++) {
-            sumTrip += tripApp[i];
-            var profitTrip = ((tripApp[i] * 100) - (tripApp[i] * document.getElementById('percentageTaxiF').value)) / 100;
-            sumProfit += profitTrip;
-        }
-
-        var totalTrips = document.getElementById('totalTrips');
-        totalTrips.innerHTML = "Total number of trips without tax = "+sumTrip.toFixed(2)+" JD";
-
-        var profitTrips = document.getElementById('profitTrips');
-        profitTrips.innerHTML = "Total net profit with tax         = " + sumProfit.toFixed(2) + " JD";
-
-        var applicationTrips = document.getElementById('applicationTrips');
-        applicationTrips.innerHTML = "The sum of the value taken by the application = " + (sumTrip - sumProfit).toFixed(2) + " JD";
-
-
-        console.log("Total number of trips without tax = " + sumTrip + " JD");
-        console.log("Total net profit with tax         = " + sumProfit + " JD");
-        console.log("The sum of the value taken by the application = " + (sumTrip - sumProfit) + " JD");
-    }*/
-    ///////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////
     function generateAdditionalFields(index) {
+        var a = index;
         var tripsInput = document.getElementsByClassName('numberTrip')[index];
         var numberOfTrips = parseInt(tripsInput.value) || 0;
 
@@ -151,6 +54,8 @@ fuelEconomy.addEventListener("submit", function(e){
                 
                 addApp((index+1));
             };
+
+            
 
         for (var i = 1; i <= numberOfTrips; i++) {
             var label = document.createElement('label');
@@ -173,7 +78,7 @@ fuelEconomy.addEventListener("submit", function(e){
         
         addSubmit.addEventListener("click", function(e){
             e.preventDefault();
-            applicationAccounts(getTripData(index),index);
+            applicationAccounts(getTripData(a),index);
         });
        
         additionalFieldsContainer.appendChild(addSubmit);
@@ -193,10 +98,7 @@ fuelEconomy.addEventListener("submit", function(e){
 
         
 
-      /*  var trips = new Array(numberOfTrips);
-        for(var i = 0 ; i < numberOfTrips ; i++){
-            trips[i] = document.getElementById('tripData'+(i+1));
-        }*/
+      
 
     }
     //////////////////////////
@@ -204,10 +106,43 @@ fuelEconomy.addEventListener("submit", function(e){
         var trips = [];
         var numberOfTrips = parseInt(document.getElementsByClassName('numberTrip')[index].value) || 0;
 
-        for (var i = 1; i <= numberOfTrips; i++) {
+       /* for (var i = 1; i <= numberOfTrips; i++) {
+            var tripData = parseFloat(document.getElementsByClassName('tripData')[i-1].value) || 0;
+            trips.push(tripData);}*/
+        
+        var tripsTaxiF = parseInt(document.getElementById('tripsTaxiF').value) || 0;
+        var tripsPetra = parseInt(document.getElementById('tripsPetra').value ) || 0;
+        var tripsZainCar = parseInt(document.getElementById('tripsZainCar').value)  || 0;
+        var tripsTicram = parseInt(document.getElementById('tripsTicram').value ) || 0;
+        var tripsGoJo = parseInt(document.getElementById('tripsGoJo').value)  || 0;
+        
+        if(index == 0){
+            for (var i = 1; i <= numberOfTrips; i++) {
             var tripData = parseFloat(document.getElementsByClassName('tripData')[i-1].value) || 0;
             trips.push(tripData);
-        }
+        }}
+        else if(index == 1){
+            for (var i = tripsTaxiF; i <= (tripsTaxiF+numberOfTrips)-1; i++) {
+                var tripData = parseFloat(document.getElementsByClassName('tripData')[i].value) || 0;
+                trips.push(tripData);
+        }}
+        else if(index == 2){
+            for (var i = tripsTaxiF+tripsPetra; i <= (tripsTaxiF+tripsPetra+tripsZainCar)-1; i++) {
+                var tripData = parseFloat(document.getElementsByClassName('tripData')[i].value) || 0;
+                trips.push(tripData);
+        }}
+        else if(index == 3){
+            for (var i = tripsTaxiF+tripsPetra+tripsZainCar; i <= (tripsTaxiF+tripsPetra+tripsZainCar+tripsTicram)-1; i++) {
+                var tripData = parseFloat(document.getElementsByClassName('tripData')[i].value) || 0;
+                trips.push(tripData);
+        }}
+        else if(index == 4){
+            for (var i = tripsTaxiF+tripsPetra+tripsZainCar+tripsTicram; i <= (tripsTaxiF+tripsPetra+tripsZainCar+tripsTicram+tripsGoJo)-1; i++) {
+                var tripData = parseFloat(document.getElementsByClassName('tripData')[i].value) || 0;
+                trips.push(tripData);
+        }}
+
+        
 
         return trips;
     }
@@ -233,9 +168,9 @@ fuelEconomy.addEventListener("submit", function(e){
         applicationTrips.innerHTML = "The sum of the value taken by the application = " + (sumTrip - sumProfit).toFixed(2) + " JD";
 
 
-        console.log("Total number of trips without tax = " + sumTrip + " JD");
-        console.log("Total net profit with tax         = " + sumProfit + " JD");
-        console.log("The sum of the value taken by the application = " + (sumTrip - sumProfit) + " JD");
+        //console.log("Total number of trips without tax = " + sumTrip + " JD");
+        //console.log("Total net profit with tax         = " + sumProfit + " JD");
+        //console.log("The sum of the value taken by the application = " + (sumTrip - sumProfit) + " JD");
     }
     
     function addApp(index){
@@ -252,8 +187,6 @@ fuelEconomy.addEventListener("submit", function(e){
         document.getElementsByClassName('percentage')[index].value = "12";
 
         generateAdditionalFields(index);
-
-    // Set values for additional fields
-    //document.getElementById('field1').value = "Enter the number of trips you have completed on ((TaxiF))";
-        //document.getElementById('percentageTaxiF').value = "14";
     }
+
+    
