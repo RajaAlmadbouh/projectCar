@@ -29,7 +29,7 @@ fuelEconomy.addEventListener("submit", function(e){
     var taxiFFields = document.getElementById('taxiFFields');
     taxiFFields.style.display = 'block';
 
-    // Set values for additional fields
+    
     //document.getElementById('field1').value = "Enter the number of trips you have completed on ((TaxiF))";
     document.getElementById('percentageTaxiF').value = "14";
 
