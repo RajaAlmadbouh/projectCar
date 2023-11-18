@@ -50,10 +50,18 @@ fuelEconomy.addEventListener("submit", function(e){
         var addSubmit = document.createElement('input');
             addSubmit.value = 'Enter';
             addSubmit.type = 'button';
+            addSubmit.className = 'enter'
             addSubmit.onclick = function() {
                 
                 addApp((index+1));
             };
+
+           /* if(index==4){
+
+                document.getElementById('sumTripApp').style.display = 'block';
+                document.getElementById('sumTripWithoutTheTaxApp').style.display = 'block';
+                addSubmit.onclick = sumTripApp;
+            }*/
 
             
 
@@ -96,8 +104,12 @@ fuelEconomy.addEventListener("submit", function(e){
         additionalFieldsContainer.appendChild(p2);
         additionalFieldsContainer.appendChild(p3);
 
-        
+       
+        if(index==4){
 
+            document.getElementById('Accounts').style.display = 'block';
+            
+        }
       
 
     }
@@ -189,4 +201,87 @@ fuelEconomy.addEventListener("submit", function(e){
         generateAdditionalFields(index);
     }
 
+    function sumTripApp() {
+        document.getElementById('sumTripApp').style.display = 'block';
+        document.getElementById('sumTripWithoutTheTaxApp').style.display = 'block';
+        let sumTrip = 0;
+        let sumProfit = 0;
+    
+        for (let i = 0; i < document.getElementsByClassName('tripData').length; i++) {
+            let inputValue = parseFloat(document.getElementsByClassName('tripData')[i].value);
+    
+            if (isNaN(inputValue)) {
+                inputValue = 0;
+            }
+    
+            sumTrip += inputValue;
+        }
+    
+        for (let i = 0; i < document.getElementsByClassName('profitTrips').length; i++) {
+            // Extract the numeric value from the text content
+            let profitText = document.getElementsByClassName('profitTrips')[i].textContent;
+            let profitValue = parseFloat(profitText.match(/-?\d+(\.\d+)?/));
+        
+            if (isNaN(profitValue)) {
+                profitValue = 0;
+            }
+        
+            sumProfit += profitValue;
+            console.log(profitValue);
+        }
+        
+    
+
+        document.getElementById('sumTripWithoutTheTaxApp').innerHTML = 'The total price of the trips without the tax you completed on the applications ' + sumProfit.toFixed(2) + ' JD.';
+        document.getElementById('sumTripApp').innerHTML = 'The total price of the trips you completed on the apps ' + sumTrip.toFixed(2) + ' JD.';
+    }
+
+   
+        
+    
+  /*  function sumTripApp() {
+
+        let sumTrip = 0;
+        let sumProfit = 0;
+
+        for (let i = 0; i < document.getElementsByClassName('tripData').length; i++) {
+            let inputValue = parseFloat(document.getElementsByClassName('tripData')[i].value);
+    
+            
+            if (isNaN(inputValue)) {
+                inputValue = 0;
+            }
+    
+            sumTrip += inputValue;
+        }
+
+        
+        for (let i = 0; i < document.getElementsByClassName('profitTrips').length; i++) {
+            let profitValue  = parseFloat(document.getElementsByClassName('profitTrips')[i].innerHTML.replace("Total net profit with tax = ","").replace(" JD", ""));
+    
+            
+            if (isNaN(profitValue )) {
+                profitValue  = 0;
+            }
+    
+            sumProfit += profitValue ;
+            console.log(sumProfit);
+        }      
+  
+         document.getElementById('sumTripWithoutTheTaxApp').innerHTML = 'The total price of the trips without the tax you completed on the applications ' + sumProfit.toFixed(2) + ' JD.';
+         document.getElementById('sumTripApp').innerHTML = 'The total price of the trips you completed on the apps ' + sumTrip.toFixed(2) + ' JD.';
+       
+      }*/
+
+     /* function sumTripPercentageApp() {
+        let sumProfit = 0;
+      
+        for (let i = 0; i < document.getElementsByClassName('profitTrips').length; i++) {
+          sumProfit += parseFloat(document.getElementsByClassName('profitTrips')[i].value);
+        }
+
+        document.getElementById('sumTripWithoutTheTaxApp').innerHTML = 'The total price of the trips without the tax you completed on the applications ' + sumTrip + ' JD.';
+      
+        return sumProfit;
+      }*/
     
