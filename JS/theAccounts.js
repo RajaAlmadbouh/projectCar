@@ -1,8 +1,14 @@
 var fuelEconomy = document.getElementById('fuelEconomyForm');
 
+var userName = document.getElementById("uesrName");
+    userName.innerHTML = localStorage.getItem('name');
+    
+    var loginOrOut = document.getElementById("loginOrOut");
+    
 
-
-
+    if(localStorage.getItem("name") != null){
+        loginOrOut.innerHTML = 'LogOut';
+        loginOrOut.onclick=clearLocalStorage;
 fuelEconomy.addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -240,20 +246,13 @@ fuelEconomy.addEventListener("submit", function(e){
         
     }
 
-   
+         function clearLocalStorage(){
+        location.replace("login.html");
+        localStorage.removeItem('name');
+        localStorage.removeItem('email');
+        localStorage.removeItem('password');
         
-    
-    var userName = document.getElementById("uesrName");
-    userName.innerHTML = localStorage.getItem('name');
-    
-    var loginOrOut = document.getElementById("loginOrOut");
-    
-    
-    
-    if(localStorage.getItem("name") != null){
-        loginOrOut.innerHTML = 'LogOut';
-        loginOrOut.onclick=clearLocalStorage;
-        
+        }
     
     }
     else{
@@ -261,11 +260,5 @@ fuelEconomy.addEventListener("submit", function(e){
         location.replace("../pages/login.html");
     }
     
-    function clearLocalStorage(){
-        location.replace("../pages/login.html");
-        localStorage.removeItem('name');
-        localStorage.removeItem('email');
-        localStorage.removeItem('password');
-        
-        }
+   
     
